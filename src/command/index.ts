@@ -2,6 +2,11 @@ import { Handler } from './type';
 import { Emacs } from '../emacs';
 import { singleFileLogger } from '../logger/SingleFileLogger';
 
+/**
+ * Command Handlers
+ */
+import { handleOpenUrl } from './open-url';
+
 const handleHello = async (data: string) => {
   singleFileLogger.info(data);
 
@@ -39,4 +44,4 @@ function register(handlers: Handler[]) {
   return handlerMap;
 }
 
-export default register(withCommandList(handleHello, handleSelectTest));
+export default register(withCommandList(handleHello, handleSelectTest, handleOpenUrl));
