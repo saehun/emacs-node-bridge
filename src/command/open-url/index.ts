@@ -17,4 +17,4 @@ export const handleOpenUrl = async (target: string) => {
   }
 };
 
-handleOpenUrl.command = 'open';
+handleOpenUrl.command = 'open-url';

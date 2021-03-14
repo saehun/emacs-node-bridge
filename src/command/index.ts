@@ -6,6 +6,7 @@ import { singleFileLogger } from '../logger/SingleFileLogger';
  * Command Handlers
  */
 import { handleOpenUrl } from './open-url';
+import { handleTsUnitTest } from './ts-unit-test';
 
 const handleHello = async (data: string) => {
   singleFileLogger.info(data);
@@ -44,4 +45,6 @@ function register(handlers: Handler[]) {
   return handlerMap;
 }
 
-export default register(withCommandList(handleHello, handleSelectTest, handleOpenUrl));
+export default register(
+  withCommandList(handleHello, handleSelectTest, handleOpenUrl, handleTsUnitTest)
+);
