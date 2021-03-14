@@ -13,7 +13,7 @@ export const handleOpenUrl = async (target: string) => {
     open(data[target]);
     return Emacs.message(`Open ${target}`);
   } else {
-    return Emacs.select(Object.keys(data), Emacs.callback('"open"', Emacs.LAMBDA_CALLBACK));
+    return Emacs.select(Object.keys(data), Emacs.callback('"open-url"', Emacs.LAMBDA_CALLBACK));
   }
 };
 
