@@ -3,8 +3,6 @@ import { handleOnExit } from './hook/onExit';
 import { Logger } from './logger/type';
 import { Emacs } from './emacs';
 
-const done = console.log;
-
 /**
  * Command start
  */
@@ -16,6 +14,11 @@ async function main(argv: string[], logger: Logger) {
     done(Emacs.message(e.message));
   } finally {
     handleOnExit();
+  }
+
+  function done(result: string) {
+    console.log(result);
+    logger.log(result);
   }
 }
 

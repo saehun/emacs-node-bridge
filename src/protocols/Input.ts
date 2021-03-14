@@ -8,7 +8,7 @@ export interface Input {
   command: string;
   buffer: string;
   region: string;
-  pos: [number, number];
+  cursor: number;
 }
 
 /**
@@ -17,8 +17,7 @@ export interface Input {
 export type EmacsInput = [
   string /** command */,
   string /** path */,
-  string /** posX */,
-  string /** posY */,
+  string /** cursor */,
   string /** buffer */,
   string /** region */
 ];
