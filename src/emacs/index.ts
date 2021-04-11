@@ -1,4 +1,5 @@
 import { callback, callbackWithEnv } from './callback';
+import { replaceRegion } from './replaceRegion';
 import { message } from './message';
 import { select } from './select';
 import { progn } from './progn';
@@ -10,6 +11,7 @@ export const Emacs = {
   select,
   message,
   callback,
+  replaceRegion,
   callbackWithEnv,
   LAMBDA_CALLBACK: 'x',
 };

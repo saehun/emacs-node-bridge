@@ -7,21 +7,11 @@ import { singleFileLogger } from '../logger/SingleFileLogger';
  */
 import { handleOpenUrl } from './open-url';
 import { handleTsUnitTest } from './ts-unit-test';
-
-const handleHello = async (data: string) => {
-  singleFileLogger.info(data);
-
-  return Emacs.message('Hello emacs!');
-};
-handleHello.command = 'hello';
-
-const handleSelectTest = async () => {
-  return Emacs.select(
-    ['apple', 'banana', 'grape'],
-    Emacs.callbackWithEnv('"hello"', Emacs.LAMBDA_CALLBACK)
-  );
-};
-handleSelectTest.command = 'select-test';
+import { wrapTryCatch } from './wrap-try-catch';
+import { runCurrentFile } from './run-current-file';
+import { testCurrentFile } from './test-current-file';
+import { debugCurrentFile } from './debug-current-file';
+import { debugTestCurrentFile } from './debug-test-current-file';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -46,5 +36,13 @@ function register(handlers: Handler[]) {
 }
 
 export default register(
-  withCommandList(handleHello, handleSelectTest, handleOpenUrl, handleTsUnitTest)
+  withCommandList(
+    handleOpenUrl,
+    handleTsUnitTest,
+    wrapTryCatch,
+    runCurrentFile,
+    testCurrentFile,
+    debugCurrentFile,
+    debugTestCurrentFile
+  )
 );
