@@ -3,7 +3,7 @@ import { Emacs } from '../../emacs';
 const privateUrls = require('../../../url');
 
 const data: Record<string, string> = {
-  'github-minidonut-new-repository': 'https://github.com/new',
+  'github-new-repository': 'https://github.com/new',
   ...privateUrls,
 };
 
