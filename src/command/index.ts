@@ -13,6 +13,7 @@ import { debugCurrentFile } from './debug-current-file';
 import { debugTestCurrentFile } from './debug-test-current-file';
 import { objectToType, objectToTypeWithComment } from './object-to-type';
 import { objectToQuery } from './object-to-query';
+import { cookieToObject } from './cookie-to-object';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -47,6 +48,7 @@ export default register(
     debugTestCurrentFile,
     objectToType,
     objectToQuery,
-    objectToTypeWithComment
+    objectToTypeWithComment,
+    cookieToObject
   )
 );
