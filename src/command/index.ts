@@ -1,6 +1,5 @@
 import { Handler } from './type';
 import { Emacs } from '../emacs';
-import { singleFileLogger } from '../logger/SingleFileLogger';
 
 /**
  * Command Handlers
@@ -13,6 +12,7 @@ import { testCurrentFile } from './test-current-file';
 import { debugCurrentFile } from './debug-current-file';
 import { debugTestCurrentFile } from './debug-test-current-file';
 import { objectToType, objectToTypeWithComment } from './object-to-type';
+import { objectToQuery } from './object-to-query';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -46,6 +46,7 @@ export default register(
     debugCurrentFile,
     debugTestCurrentFile,
     objectToType,
+    objectToQuery,
     objectToTypeWithComment
   )
 );

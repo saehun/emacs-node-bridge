@@ -41,5 +41,7 @@ function createComment(value: any, withComment: boolean) {
   if (value === null) {
     return ' // null';
   }
-  return ['number', 'string', 'boolean'].includes(typeof value) ? ` // ${value}` : '';
+  return ['number', 'string', 'boolean'].includes(typeof value)
+    ? ` // ${JSON.stringify(value)}`
+    : '';
 }
