@@ -12,6 +12,9 @@ import { testCurrentFile } from './test-current-file';
 import { debugCurrentFile } from './debug-current-file';
 import { debugTestCurrentFile } from './debug-test-current-file';
 import { gitOpenNodeModules } from './git-open-node-modules';
+import { objectToType, objectToTypeWithComment } from './object-to-type';
+import { objectToQuery } from './object-to-query';
+import { cookieToObject } from './cookie-to-object';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -44,6 +47,10 @@ export default register(
     testCurrentFile,
     debugCurrentFile,
     debugTestCurrentFile,
-    gitOpenNodeModules
+    gitOpenNodeModules,
+    objectToType,
+    objectToQuery,
+    objectToTypeWithComment,
+    cookieToObject
   )
 );

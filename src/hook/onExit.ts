@@ -1,7 +1,6 @@
 /**
  * Before exit handler manager
  */
-
 const handlers: Array<() => void> = [];
 
 export function registerOnExit(handler: () => void) {

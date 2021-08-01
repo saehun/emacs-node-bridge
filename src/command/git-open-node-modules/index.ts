@@ -72,5 +72,9 @@ function getGitUrl(pkgJson: Record<string, any>): [string, string] {
   if (!url) {
     throw new Error(`Cannot find repository url`);
   }
-  return [url, `Opening ${url}`];
+  return [sanitize(url), `Opening ${url}`];
+
+  function sanitize(url: string) {
+    return url.replace(/^git\+/, '');
+  }
 }
