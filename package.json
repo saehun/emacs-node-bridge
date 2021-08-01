@@ -33,6 +33,9 @@
   "dependencies": {
     "clipboardy": "^2.3.0",
     "fs-extra": "^10.0.0",
+    "json-schema-generator": "^2.0.6",
+    "json-schema-to-typescript": "^10.1.4",
+    "json5": "^2.2.0",
     "open": "^8.0.2",
     "query-string": "^7.0.0",
     "rxjs": "^6.6.6",

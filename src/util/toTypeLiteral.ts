@@ -25,7 +25,7 @@ export function toTypeLiteral(obj: any, withComment = false, indent = 2): string
           break;
       }
 
-      return space + `${key}: ${type}` + createComment(value, withComment);
+      return space + `"${key}": ${type}` + createComment(value, withComment);
     })
     .join('\n');
 
