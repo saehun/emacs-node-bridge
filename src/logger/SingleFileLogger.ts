@@ -21,7 +21,7 @@ export function createSingleFileLogger(filename = 'default.log'): Logger {
   function append(type: string) {
     return (...data: any[]) => {
       buffer.push(`[${type}]:
-${data.map(x => JSON.stringify(data, undefined, 2)).join('\n')}
+${data.map(item => JSON.stringify(item, undefined, 2)).join('\n')}
 `);
     };
   }

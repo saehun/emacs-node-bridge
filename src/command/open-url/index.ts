@@ -1,6 +1,13 @@
 import * as open from 'open';
 import { Emacs } from '../../emacs';
-const privateUrls = require('../../../url');
+
+let privateUrls = [];
+
+try {
+  privateUrls = require('../../../url');
+} catch {
+  /** noop */
+}
 
 const data: Record<string, string> = {
   'github-minidonut-new-repository': 'https://github.com/new',

@@ -1,6 +1,5 @@
 import { Handler } from './type';
 import { Emacs } from '../emacs';
-import { singleFileLogger } from '../logger/SingleFileLogger';
 
 /**
  * Command Handlers
@@ -12,6 +11,7 @@ import { runCurrentFile } from './run-current-file';
 import { testCurrentFile } from './test-current-file';
 import { debugCurrentFile } from './debug-current-file';
 import { debugTestCurrentFile } from './debug-test-current-file';
+import { gitOpenNodeModules } from './git-open-node-modules';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -43,6 +43,7 @@ export default register(
     runCurrentFile,
     testCurrentFile,
     debugCurrentFile,
-    debugTestCurrentFile
+    debugTestCurrentFile,
+    gitOpenNodeModules
   )
 );

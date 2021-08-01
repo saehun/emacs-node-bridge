@@ -1,7 +1,7 @@
 import { Emacs } from '../../emacs';
 import * as assert from 'assert';
 import { Env } from '../type';
-import { isTypescriptMode } from '../../util/isTypescriptMode';
+import { isTypescriptMode } from '../../util/predicates';
 import { write } from 'clipboardy';
 import { createCommandWithCurrentfile } from '../../util/createCommandWithCurrentFile';
 

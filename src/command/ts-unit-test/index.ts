@@ -2,7 +2,7 @@ import { ensureTestFile } from '../../util/ensureTestFile';
 import { Emacs } from '../../emacs';
 import * as assert from 'assert';
 import { Env } from '../type';
-import { isTypescriptMode } from '../../util/isTypescriptMode';
+import { isTypescriptMode } from '../../util/predicates';
 
 export const handleTsUnitTest = async (_: string, env?: Env) => {
   assert(env, "Environment required. (use 'post-message-node-with-env')");
