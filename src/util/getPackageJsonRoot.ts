@@ -1,5 +1,5 @@
 import * as os from 'os';
-import * as fs from 'fs/promises';
+import * as fs from 'fs-extra';
 import * as path from 'path';
 
 export async function getPackageJsonRoot(
@@ -25,4 +25,14 @@ export async function getPackageJsonRoot(
   }
 
   throw new Error('cannot found package.json');
+}
+
+export async function getNodeMoudlesPackageJson(rootDir: string, packageName: string) {
+  const path = rootDir + `/node_modules/${packageName}/package.json`;
+  return await fs.readJson(path);
+}
+
+export async function getRootPackageJson(dirname: string) {
+  const rootDir = await getPackageJsonRoot(dirname);
+  return await fs.readJson(rootDir + `/package.json`);
 }

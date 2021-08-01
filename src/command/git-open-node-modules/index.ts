@@ -1,8 +1,7 @@
 import * as assert from 'assert';
-import * as fs from 'fs-extra';
 import * as open from 'open';
 import { Emacs } from '../../emacs';
-import { getPackageJsonRoot } from '../../util/getPackageJsonRoot';
+import { getNodeMoudlesPackageJson, getPackageJsonRoot } from '../../util/getPackageJsonRoot';
 import { wraparoundedStringOf } from '../../util/parsing';
 import { isJavascriptMode, isPackageJsonFile, isTypescriptMode } from '../../util/predicates';
 import { Env } from '../type';
@@ -15,7 +14,7 @@ export async function gitOpenNodeModules(_: string, env?: Env) {
 
   const packageName = getPackageName(env);
   const rootDir = await getPackageJsonRoot(env.directory);
-  const pkgJson = await getPackageJson(rootDir, packageName);
+  const pkgJson = await getNodeMoudlesPackageJson(rootDir, packageName);
   const [url, message] = getGitUrl(pkgJson);
   open(url);
   return Emacs.message(message);
@@ -42,11 +41,6 @@ function getPackageName(env: Pick<Env, 'buffer' | 'cursor' | 'filename'>) {
     }
     return name;
   }
-}
-
-async function getPackageJson(rootDir: string, packageName: string) {
-  const path = rootDir + `/node_modules/${packageName}/package.json`;
-  return await fs.readJson(path);
 }
 
 function getGitUrl(pkgJson: Record<string, any>): [string, string] {
