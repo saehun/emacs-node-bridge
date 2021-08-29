@@ -31,7 +31,7 @@ export async function importFromProjectSelect(data: string, env?: Env) {
         .replace(/\/index.[tj]sx?$/, '')
         .replace(/\.[tj]sx?$/, '')
     : data;
-  return `(node-insert-import "${importFrom}")`;
+  return `(node-insert-import-and-complete "${importFrom}")`;
 }
 
 importFromProject.command = 'import-from-project';
