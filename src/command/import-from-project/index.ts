@@ -25,12 +25,15 @@ export async function importFromProject(data: string, env?: Env) {
 export async function importFromProjectSelect(data: string, env?: Env) {
   assert(env, "Environment required. (use 'post-message-node-with-env')");
   const rootDir = await getPackageJsonRoot(env.directory);
-  const importFrom = /\.[tj]sx?$/.test(data)
-    ? path
-        .relative(env.directory, path.join(rootDir, data))
-        .replace(/\/index.[tj]sx?$/, '')
-        .replace(/\.[tj]sx?$/, '')
-    : data;
+  let importFrom = data;
+  if (/\.[tj]sx?$/.test(data)) {
+    const resolved = path
+      .relative(env.directory, path.join(rootDir, data))
+      .replace(/\/index.[tj]sx?$/, '')
+      .replace(/\.[tj]sx?$/, '');
+    importFrom = resolved.startsWith('.') ? resolved : `./${resolved}`;
+  }
+
   return `(node-insert-import-and-complete "${importFrom}")`;
 }
 
