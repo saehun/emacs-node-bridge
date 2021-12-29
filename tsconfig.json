@@ -7,10 +7,11 @@
     "strictNullChecks": true,
     "sourceMap": false,
     "outDir": "dist",
+    "allowJs": true,
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [ "dom", "esnext" ]
+    "lib": ["esnext"]
   },
   "include": [
     "src/**/*"

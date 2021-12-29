@@ -1,29 +1,22 @@
 import { Emacs } from '../../emacs';
 import * as assert from 'assert';
 import { Env } from '../type';
+import * as lzstring from '../../util/lzstring';
+import * as open from 'open';
 
 export async function typescriptPlayground(_: string, env?: Env) {
   assert(env, "Environment required. (use 'post-message-node-with-env')");
-  return Emacs.progn(Emacs.replaceRegion(parseCookieToObject(env.region)));
+  const source = env.region.trim();
+  if (source) {
+    open(
+      `https://www.typescriptlang.org/play?#code/${lzstring.compressToEncodedURIComponent(
+        env.region.trim()
+      )}`
+    );
+  } else {
+    open('https://www.typescriptlang.org/play');
+  }
+  return Emacs.message('open typescript playground');
 }
 
 typescriptPlayground.command = 'typescript-playground';
-
-function parseCookieToObject(cookie: string) {
-  return JSON.stringify(
-    cookie
-      .trim()
-      .split('\n')
-      .map(line => {
-        const parsed = /^(\S+?):(.*)$/.exec(line);
-        if (parsed?.length !== 3) {
-          return {};
-        } else {
-          return { [parsed[1]]: parsed[2].trim() };
-        }
-      })
-      .reduce((acc, n) => ({ ...acc, ...n }), {}),
-    undefined,
-    2
-  );
-}

@@ -16,6 +16,7 @@ import { objectToType, objectToTypeWithComment } from './object-to-type';
 import { objectToQuery } from './object-to-query';
 import { cookieToObject } from './cookie-to-object';
 import { importFromProject, importFromProjectSelect } from './import-from-project';
+import { typescriptPlayground } from './typescript-playground';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -54,6 +55,7 @@ export default register(
     objectToTypeWithComment,
     cookieToObject,
     importFromProject,
-    importFromProjectSelect
+    importFromProjectSelect,
+    typescriptPlayground
   )
 );
