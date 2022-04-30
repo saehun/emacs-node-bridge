@@ -12,7 +12,10 @@ export async function importFromProject(data: string, env?: Env) {
   }
 
   const pkgJson = await getRootPackageJson(env.directory);
-  const deps = Object.keys(pkgJson.dependencies || {});
+  const deps = [
+    ...Object.keys(pkgJson.dependencies || {}),
+    ...Object.keys(pkgJson.peerDependencies || {}),
+  ];
   const files = parseFileList(data).filter(file => /\.[tj]sx?$/.test(file));
 
   return Emacs.select(
