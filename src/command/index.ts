@@ -17,6 +17,7 @@ import { objectToQuery } from './object-to-query';
 import { cookieToObject } from './cookie-to-object';
 import { importFromProject, importFromProjectSelect } from './import-from-project';
 import { typescriptPlayground } from './typescript-playground';
+import { transformRequest } from './transform-request';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -56,6 +57,7 @@ export default register(
     cookieToObject,
     importFromProject,
     importFromProjectSelect,
-    typescriptPlayground
+    typescriptPlayground,
+    transformRequest
   )
 );

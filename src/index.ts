@@ -12,7 +12,7 @@ async function main(argv: string[], logger: Logger) {
     logger.log(argv);
     await dispatch(argv, done);
   } catch (e) {
-    done(Emacs.message(e.message));
+    done(Emacs.message(`${e.name}: ${e.message}`));
   } finally {
     handleOnExit();
   }
