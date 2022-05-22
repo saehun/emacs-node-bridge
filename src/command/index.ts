@@ -18,6 +18,7 @@ import { cookieToObject } from './cookie-to-object';
 import { importFromProject, importFromProjectSelect } from './import-from-project';
 import { typescriptPlayground } from './typescript-playground';
 import { transformRequest } from './transform-request';
+import { jwtDecode } from './jwt';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -58,6 +59,7 @@ export default register(
     importFromProject,
     importFromProjectSelect,
     typescriptPlayground,
-    transformRequest
+    transformRequest,
+    jwtDecode
   )
 );

@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
     "@types/jest": "^26.0.20",
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^14.14.31",
     "@types/ramda": "^0.28.11",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
@@ -37,6 +38,7 @@
     "json-schema-generator": "^2.0.6",
     "json-schema-to-typescript": "^10.1.4",
     "json5": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
     "open": "^8.0.2",
     "query-string": "^7.0.0",
     "ramda": "^0.28.0",
