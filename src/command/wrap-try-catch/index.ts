@@ -1,16 +1,14 @@
 import { Emacs } from '../../emacs';
 import { Env } from '../type';
-import * as assert from 'assert';
 import { indent } from '../../util/strings';
+import { assertEnv, assertRegion } from '../../util/assert';
 
 /**
  * Wrap block with try-catch
  */
-export const wrapTryCatch = async (_: string, env: Env) => {
-  assert(env, "Environment required. (use 'post-message-node-with-env')");
-  if (!env.region) {
-    throw new Error('Region is empty');
-  }
+export const wrapTryCatch = async (_: string, env?: Env) => {
+  assertEnv(env);
+  assertRegion(env);
   return Emacs.progn(Emacs.replaceRegion(wrapRegionWithTryCatch(env.region)));
 };
 
