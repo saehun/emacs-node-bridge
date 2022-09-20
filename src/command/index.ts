@@ -19,6 +19,7 @@ import { importFromProject, importFromProjectSelect } from './import-from-projec
 import { typescriptPlayground } from './typescript-playground';
 import { transformRequest } from './transform-request';
 import { jwtDecode } from './jwt';
+import { blame } from './blame';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -60,6 +61,7 @@ export default register(
     importFromProjectSelect,
     typescriptPlayground,
     transformRequest,
-    jwtDecode
+    jwtDecode,
+    blame
   )
 );
