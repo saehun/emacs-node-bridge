@@ -1,4 +1,4 @@
-import * as assert from 'assert';
+import assert from 'assert';
 import { execSync } from 'child_process';
 import { Emacs } from '../../emacs';
 import { Env } from '../type';

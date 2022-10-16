@@ -1,25 +1,26 @@
-import { Handler } from './type';
 import { Emacs } from '../emacs';
+import { Handler } from './type';
 
 /**
  * Command Handlers
  */
-import { handleOpenUrl } from './open-url';
-import { handleTsUnitTest } from './ts-unit-test';
-import { wrapTryCatch } from './wrap-try-catch';
-import { runCurrentFile } from './run-current-file';
-import { testCurrentFile } from './test-current-file';
+import { blame, blameCommit } from './blame';
+import { cookieToObject } from './cookie-to-object';
 import { debugCurrentFile } from './debug-current-file';
 import { debugTestCurrentFile } from './debug-test-current-file';
 import { gitOpenNodeModules } from './git-open-node-modules';
-import { objectToType, objectToTypeWithComment } from './object-to-type';
-import { objectToQuery } from './object-to-query';
-import { cookieToObject } from './cookie-to-object';
 import { importFromProject, importFromProjectSelect } from './import-from-project';
-import { typescriptPlayground } from './typescript-playground';
-import { transformRequest } from './transform-request';
 import { jwtDecode } from './jwt';
-import { blame, blameCommit } from './blame';
+import { objectToQuery } from './object-to-query';
+import { objectToType, objectToTypeWithComment } from './object-to-type';
+import { handleOpenUrl } from './open-url';
+import { runCurrentFile } from './run-current-file';
+import { testCurrentFile } from './test-current-file';
+import { transformRequest } from './transform-request';
+import { tsAstTree, tsFactoryCodeGen, tsSyntaxKind } from './ts-lang-service';
+import { handleTsUnitTest } from './ts-unit-test';
+import { typescriptPlayground } from './typescript-playground';
+import { wrapTryCatch } from './wrap-try-catch';
 
 function withCommandList(...handlers: Handler[]): Handler[] {
   const handleGetCommandList = async () => {
@@ -63,6 +64,9 @@ export default register(
     transformRequest,
     jwtDecode,
     blame,
-    blameCommit
+    blameCommit,
+    tsAstTree,
+    tsSyntaxKind,
+    tsFactoryCodeGen
   )
 );

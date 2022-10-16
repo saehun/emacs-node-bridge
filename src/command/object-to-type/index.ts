@@ -1,5 +1,5 @@
 import { Emacs } from '../../emacs';
-import * as assert from 'assert';
+import assert from 'assert';
 import { Env } from '../type';
 import * as JSON from 'json5';
 import { write } from 'clipboardy';

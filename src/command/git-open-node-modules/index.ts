@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import * as open from 'open';
+import assert from 'assert';
+import open from 'open';
 import { Emacs } from '../../emacs';
 import { getNodeMoudlesPackageJson, getPackageJsonRoot } from '../../util/getPackageJsonRoot';
 import { wraparoundedStringOf } from '../../util/parsing';

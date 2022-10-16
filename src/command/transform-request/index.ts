@@ -1,4 +1,4 @@
-import * as assert from 'assert';
+import assert from 'assert';
 import { match } from 'ts-pattern';
 import { Emacs } from '../../emacs';
 import { Env } from '../type';
@@ -6,7 +6,7 @@ import {
   generateHttpTemplateFetcher,
   generateHttpTemplateRequester,
   generateParsedRequestFetcher,
-  generateParsedRequestRequester
+  generateParsedRequestRequester,
 } from './generator';
 import { parseCurlCommand } from './lib/parseCurl';
 import { parseHttpReqeust } from './lib/parseHttp';

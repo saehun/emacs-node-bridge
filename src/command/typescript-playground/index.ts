@@ -1,8 +1,8 @@
 import { Emacs } from '../../emacs';
-import * as assert from 'assert';
+import assert from 'assert';
 import { Env } from '../type';
 import * as lzstring from '../../util/lzstring';
-import * as open from 'open';
+import open from 'open';
 
 export async function typescriptPlayground(_: string, env?: Env) {
   assert(env, "Environment required. (use 'post-message-node-with-env')");

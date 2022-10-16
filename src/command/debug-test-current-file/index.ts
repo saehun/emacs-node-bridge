@@ -1,9 +1,9 @@
 import { Emacs } from '../../emacs';
-import * as assert from 'assert';
-import { Env } from '../type';
+import assert from 'assert';
 import { isTypescriptMode } from '../../util/predicates';
 import { write } from 'clipboardy';
 import { createCommandWithCurrentfile } from '../../util/createCommandWithCurrentFile';
+import { Env } from '../type';
 
 export async function debugTestCurrentFile(_: string, env?: Env) {
   assert(env, "Environment required. (use 'post-message-node-with-env')");

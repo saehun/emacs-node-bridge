@@ -1,4 +1,4 @@
-import * as open from 'open';
+import open from 'open';
 import { Emacs } from '../../emacs';
 
 let privateUrls = [];
