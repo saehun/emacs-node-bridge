@@ -17,7 +17,12 @@ import { handleOpenUrl } from './open-url';
 import { runCurrentFile } from './run-current-file';
 import { testCurrentFile } from './test-current-file';
 import { transformRequest } from './transform-request';
-import { tsAstTree, tsFactoryCodeGen, tsSyntaxKind } from './ts-lang-service';
+import {
+  tsAstTree,
+  tsSyntaxKind,
+  tsFactoryCodeGen,
+  tsTranspileRegionAndCopy,
+} from './ts-lang-service';
 import { handleTsUnitTest } from './ts-unit-test';
 import { typescriptPlayground } from './typescript-playground';
 import { wrapTryCatch } from './wrap-try-catch';
@@ -67,6 +72,7 @@ export default register(
     blameCommit,
     tsAstTree,
     tsSyntaxKind,
-    tsFactoryCodeGen
+    tsFactoryCodeGen,
+    tsTranspileRegionAndCopy
   )
 );
