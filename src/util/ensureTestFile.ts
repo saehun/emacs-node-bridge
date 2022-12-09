@@ -27,6 +27,21 @@ export async function ensureTestFile(env: Env): Promise<[string, boolean]> {
   return [testFilePath, exist];
 }
 
+/**
+ * get original source file path
+ *
+ * @param env - Emacs command execution environment
+ */
+export async function ensureSourceFile(env: Env) {
+  const sourceFilePath = path.join(
+    env.directory,
+    '..',
+    env.filename.replace(/\.(test|spec)\.ts/, '.ts')
+  );
+  const exist = await fs.pathExists(sourceFilePath);
+  return [sourceFilePath, exist] as const;
+}
+
 function generateTestFile(name: string): string {
   return `import { } from '../${name}';
 

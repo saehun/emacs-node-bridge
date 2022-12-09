@@ -1,4 +1,4 @@
-import { ensureTestFile } from '../../util/ensureTestFile';
+import { ensureSourceFile, ensureTestFile } from '../../util/ensureTestFile';
 import { Emacs } from '../../emacs';
 import assert from 'assert';
 import { Env } from '../type';
@@ -11,13 +11,18 @@ export const handleTsUnitTest = async (_: string, env?: Env) => {
   }
 
   if (env.filename.endsWith('.test.ts') || env.filename.endsWith('.spec.ts')) {
-    throw new Error(`Already in test file.`);
+    const [path, exist] = await ensureSourceFile(env);
+    if (exist) {
+      return Emacs.open(path, false);
+    } else {
+      throw new Error(`Cannot find source file: ${path}`);
+    }
   }
 
   const [path, created] = await ensureTestFile(env);
 
   return Emacs.progn(
-    Emacs.open(path, true),
+    Emacs.open(path, false),
     Emacs.message(`Open ${path}.` + created ? ' (created)' : '')
   );
 };

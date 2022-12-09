@@ -6,8 +6,7 @@
   "main": "dist/index.js",
   "repository": "minidonut/emacs-node-bridge",
   "scripts": {
-    "build": "tsc",
-    "postbuild": "scripts/postbuild.sh",
+    "build": "tsc && scripts/postbuild.sh",
     "test": "NODE_ENV=test jest",
     "lint": "eslint . --ext .js,.ts",
     "start": "ts-node src/index.ts",

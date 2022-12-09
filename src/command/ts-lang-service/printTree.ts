@@ -1,5 +1,4 @@
 import ts from 'typescript';
-import { syntaxKindToString } from './syntaxKindToString';
 
 export function printTree(rootNode: ts.Node, sourceFile: ts.SourceFile): string {
   const tree: StringTree = {};
@@ -7,7 +6,7 @@ export function printTree(rootNode: ts.Node, sourceFile: ts.SourceFile): string 
   function visit(node: ts.Node, currentTree: StringTree) {
     const kind = ts.isIdentifier(node)
       ? `Identifier(${node.getText(sourceFile)})`
-      : syntaxKindToString(node.kind);
+      : ts.SyntaxKind[node.kind];
 
     if (node.getChildCount(sourceFile) === 0) {
       currentTree[kind] = null;
