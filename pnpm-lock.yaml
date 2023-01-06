@@ -50,7 +50,6 @@ dependencies:
   ts-factory-code-generator-generator: 0.6.4
   ts-morph: 10.1.0
   ts-pattern: 4.0.2
-  typescript: 4.6.4
 
 devDependencies:
   '@types/fs-extra': 9.0.13
@@ -65,6 +64,7 @@ devDependencies:
   prettier: 2.6.2
   ts-jest: 26.5.6_ip4jai7pxkumsngma2fb7ud2tm
   ts-node: 9.1.1_typescript@4.6.4
+  typescript: 4.6.4
 
 packages:
 
@@ -4782,6 +4782,7 @@ packages:
     resolution: {integrity: sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: true
 
   /union-value/1.0.1:
     resolution: {integrity: sha512-tJfXmxMeWYnczCVs7XAEvIV7ieppALdyepWMkHkwciRpZraG/xwT+s2JN8+pr1+8jCRf80FFzvr+MpQeeoF4Xg==}
