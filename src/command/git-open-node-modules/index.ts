@@ -13,8 +13,8 @@ export async function gitOpenNodeModules(_: string, env?: Env) {
   }
 
   const packageName = getPackageName(env);
-  const rootDir = await getPackageJsonRoot(env.directory);
-  const pkgJson = await getNodeMoudlesPackageJson(rootDir, packageName);
+  const rootDir = getPackageJsonRoot(env.directory);
+  const pkgJson = getNodeMoudlesPackageJson(rootDir, packageName);
   const [url, message] = getGitUrl(pkgJson);
   open(url);
   return Emacs.message(message);

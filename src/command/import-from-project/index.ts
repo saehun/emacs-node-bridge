@@ -27,7 +27,7 @@ export async function importFromProject(data: string, env?: Env) {
 
 export async function importFromProjectSelect(data: string, env?: Env) {
   assert(env, "Environment required. (use 'post-message-node-with-env')");
-  const rootDir = await getPackageJsonRoot(env.directory);
+  const rootDir = getPackageJsonRoot(env.directory);
   let importFrom = data;
   if (/\.[tj]sx?$/.test(data)) {
     const resolved = path

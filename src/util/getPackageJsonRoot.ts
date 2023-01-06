@@ -2,37 +2,33 @@ import * as os from 'os';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
-export async function getPackageJsonRoot(
-  dirname: string,
-  boundary = os.homedir(),
-  safeLoopCountMax = 20
-): Promise<string> {
-  let currentDir = dirname;
-  let safeLoopCount = 0;
-  // eslint-disable-next-line
-  while (safeLoopCount++ < safeLoopCountMax) {
-    if (currentDir === boundary) {
-      break;
+export function getPackageJsonRoot(dirname: string) {
+  for (const packageJsonPath of generateParentPathOf(path.join(dirname, 'package.json'))) {
+    if (fs.existsSync(packageJsonPath)) {
+      return path.parse(packageJsonPath).dir;
     }
-
-    const children = await fs.readdir(currentDir);
-    for (const child of children) {
-      if (child === 'package.json') {
-        return currentDir;
-      }
-    }
-    currentDir = path.join(currentDir, '..');
   }
-
-  throw new Error('cannot found package.json');
+  throw new Error('Failed to find tsconfig.json');
 }
 
-export async function getNodeMoudlesPackageJson(rootDir: string, packageName: string) {
+function parentOf(basePath: string) {
+  const { dir, base } = path.parse(basePath);
+  return path.join(dir, '..', base);
+}
+
+function* generateParentPathOf(basePath: string, until = os.homedir()): IterableIterator<string> {
+  do {
+    yield basePath;
+    basePath = parentOf(basePath);
+  } while (basePath !== until);
+}
+
+export function getNodeMoudlesPackageJson(rootDir: string, packageName: string) {
   const path = rootDir + `/node_modules/${packageName}/package.json`;
-  return await fs.readJson(path);
+  return fs.readJsonSync(path);
 }
 
-export async function getRootPackageJson(dirname: string) {
-  const rootDir = await getPackageJsonRoot(dirname);
-  return await fs.readJson(rootDir + `/package.json`);
+export function getRootPackageJson(dirname: string) {
+  const rootDir = getPackageJsonRoot(dirname);
+  return fs.readJsonSync(rootDir + `/package.json`);
 }

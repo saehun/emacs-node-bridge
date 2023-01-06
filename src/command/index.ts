@@ -17,6 +17,7 @@ import { handleOpenUrl } from './open-url';
 import { runCurrentFile } from './run-current-file';
 import { testCurrentFile } from './test-current-file';
 import { transformRequest } from './transform-request';
+import { packageInstall, packageAdd, packageAddDev } from './package-install';
 import {
   tsAstTree,
   tsSyntaxKind,
@@ -73,6 +74,9 @@ export default register(
     tsAstTree,
     tsSyntaxKind,
     tsFactoryCodeGen,
-    tsTranspileRegionAndCopy
+    tsTranspileRegionAndCopy,
+    packageInstall,
+    packageAdd,
+    packageAddDev
   )
 );
