@@ -33,6 +33,9 @@ export const tsFactoryCodeGen = async (target: string, env?: Env) => {
 
 tsFactoryCodeGen.command = 'ts-factory-code-gen';
 
+/**
+ * npx ts-node src/command/ts-lang-service/ts-factory-code-gen.ts
+ */
 export function generateFactory() {
   const code = generateCode('typescript');
   fs.writeFileSync('./src/command/ts-lang-service/factoryCodeGenerator.ts', code);

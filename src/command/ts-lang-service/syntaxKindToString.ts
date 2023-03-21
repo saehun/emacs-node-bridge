@@ -360,5 +360,5 @@ const syntaxKindNames = {
 };
 
 export function syntaxKindToString(kind: ts.SyntaxKind): string {
-  return syntaxKindNames[kind] ?? 'UnknownSyntaxKind';
+  return (syntaxKindNames as any)[kind] ?? 'UnknownSyntaxKind';
 }

@@ -20,6 +20,7 @@ import { transformRequest } from './transform-request';
 import { packageInstall, packageAdd, packageAddDev } from './package-install';
 import {
   tsAstTree,
+  tsCopyType,
   tsSyntaxKind,
   tsFactoryCodeGen,
   tsTranspileRegionAndCopy,
@@ -72,6 +73,7 @@ export default register(
     blame,
     blameCommit,
     tsAstTree,
+    tsCopyType,
     tsSyntaxKind,
     tsFactoryCodeGen,
     tsTranspileRegionAndCopy,
