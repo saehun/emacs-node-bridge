@@ -23,8 +23,8 @@ export const tsCopyType = async (_: string, env?: Env) => {
       return;
     }
     const [start, end] = [node.getStart(), node.getEnd()];
-    const pos = env.cursor.pos;
-    if (pos >= start && pos <= end) {
+    const pos = env.cursor.pos - 1;
+    if (start <= pos && pos <= end) {
       identifierNode = node.asKindOrThrow(ts.SyntaxKind.Identifier);
     }
   });
@@ -33,10 +33,11 @@ export const tsCopyType = async (_: string, env?: Env) => {
     throw new Error('Failed to find node on position');
   }
   const typeOfIdentifier = (identifierNode as Identifier).getType();
-  const typeText = typeOfIdentifier.getText();
+  const typeImportRegex = /import\(".+?"\)\./g;
+  const typeText = typeOfIdentifier.getText().replace(typeImportRegex, '');
 
   await write(typeText);
-  return Emacs.message(typeText, { name: '*ts-copy-type*', on: 'help-window' });
+  return Emacs.message(typeText.replace(/"/g, `'`));
 };
 tsCopyType.command = 'ts-copy-type';
 
