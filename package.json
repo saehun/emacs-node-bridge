@@ -39,7 +39,7 @@
     "json-schema-generator": "^2.0.6",
     "json-schema-to-typescript": "^10.1.4",
     "json5": "^2.2.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "object-treeify": "^2.0.1",
     "open": "^8.0.2",
     "pretty-error": "^4.0.0",
